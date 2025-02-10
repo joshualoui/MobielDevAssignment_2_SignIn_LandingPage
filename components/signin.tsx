@@ -21,7 +21,9 @@ const SignIn: React.FC<SignInProps> = ({
       (user) => user.username === username && user.password === password
     );
     if (user) {
-      booleanToggle(true);
+      alert("User found");
+      //For now to test out the functionality.
+      // booleanToggle(true);
     } else {
       alert("Invalid username or password");
     }
@@ -29,7 +31,7 @@ const SignIn: React.FC<SignInProps> = ({
 
   return (
     <View>
-      <Text>Sign In</Text>
+      <Text style={styles.text}>Sign In</Text>
       <TextInput
         placeholder="Username"
         value={username}
@@ -40,7 +42,11 @@ const SignIn: React.FC<SignInProps> = ({
         value={password}
         onChangeText={setPassword}
       />
-      <Button title="Login" onPress={handleSubmit} />
+      <Button
+        title="Log
+      in"
+        onPress={handleSubmit}
+      />
     </View>
   );
 };

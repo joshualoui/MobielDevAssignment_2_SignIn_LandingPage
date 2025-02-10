@@ -8,7 +8,7 @@ export default function App() {
   //when isLoggedIn is toggled to True then LandingPage is displayed.
   return (
     <View>
-      <Text>
+      <Text style={styles.text}>
         Sign in and landing page. Need to surround SignIn and landingpage with
         conditional statement. When loggedin=True is swaps to LandingPage.
         Default is sign in page.
@@ -25,7 +25,8 @@ export default function App() {
 
 const styles = StyleSheet.create({
   text: {
-    color: "blue",
-    fontSize: 20,
+    color: "green",
+    fontSize: 15,
+    marginTop: 40,
   },
 });
