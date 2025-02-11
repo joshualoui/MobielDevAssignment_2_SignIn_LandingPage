@@ -24,17 +24,17 @@ const LandingPage: React.FC<LandingPageProps> = ({
   const user = credentials.users.find((user) => user.username === username);
   return (
     <View style={styles.container}>
-      <Text style={styles.text}>Welcome {username}</Text>
+      <Text style={styles.text}>Welcome {username}!</Text>
       <Text style={styles.text}>You have successfully logged in!</Text>
 
       <TouchableOpacity
         style={styles.button}
         onPress={() => {
-          Alert.alert(`Logged out of account\n Goodbye ${username}`);
+          Alert.alert(`Logged out of account\nGoodbye ${username}`);
           booleanToggle(false);
         }}
       >
-        <Text style={styles.text}>Log Out</Text>
+        <Text style={styles.buttonText}>Log Out</Text>
       </TouchableOpacity>
     </View>
   );
@@ -54,8 +54,15 @@ const styles = StyleSheet.create({
   button: {
     backgroundColor: "red",
     padding: 5,
-    borderRadius: 15,
+    borderRadius: 8,
     margin: 10,
+    borderColor: "gray",
+    borderWidth: 2,
+  },
+  buttonText: {
+    color: "white",
+    fontSize: 20,
+    padding: 5,
   },
 });
 

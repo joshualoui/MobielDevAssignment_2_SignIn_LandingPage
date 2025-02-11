@@ -1,7 +1,15 @@
 import { useState } from "react";
 import credentials from "../credentials.json";
 import { Link, useRouter } from "expo-router";
-import { StyleSheet, View, Text, TextInput, Button } from "react-native";
+import {
+  StyleSheet,
+  View,
+  Text,
+  TextInput,
+  Button,
+  TouchableOpacity,
+  Alert,
+} from "react-native";
 
 type SignInProps = {
   booleanToggle: (isLoggedIn: boolean) => void;
@@ -23,9 +31,13 @@ const SignIn: React.FC<SignInProps> = ({
       (user) => user.username === username && user.password === password
     );
     if (user) {
-      alert("User found direct to landing page");
+      alert(`Hi ${username}!\nYou have successfully logged in!`);
       //For now to test out the functionality.
       booleanToggle(true);
+    } else if (username === "") {
+      alert("Please enter a username");
+    } else if (password === "") {
+      alert("Please enter a password");
     } else if (username.includes(" ")) {
       alert("Username cannot contain spaces");
     } else if (password.includes(" ")) {
@@ -40,7 +52,7 @@ const SignIn: React.FC<SignInProps> = ({
   };
 
   return (
-    <View>
+    <View style={styles.container}>
       <Text style={styles.text}>Sign In</Text>
       <TextInput
         placeholder="Username"
@@ -52,11 +64,10 @@ const SignIn: React.FC<SignInProps> = ({
         value={password}
         onChangeText={setPassword}
       />
-      <Button
-        title="Log
-      in"
-        onPress={handleSubmit}
-      />
+
+      <TouchableOpacity style={styles.button} onPress={handleSubmit}>
+        <Text style={styles.buttonText}>Log In</Text>
+      </TouchableOpacity>
     </View>
   );
 };
@@ -65,6 +76,26 @@ const styles = StyleSheet.create({
   text: {
     color: "blue",
     fontSize: 20,
+  },
+  container: {
+    marginTop: 300,
+    flexDirection: "column",
+    backgroundColor: "lightblue",
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  button: {
+    backgroundColor: "#0099ff",
+    padding: 5,
+    borderRadius: 8,
+    margin: 10,
+    borderColor: "gray",
+    borderWidth: 2,
+  },
+  buttonText: {
+    color: "white",
+    fontSize: 20,
+    padding: 5,
   },
 });
 export default SignIn;
