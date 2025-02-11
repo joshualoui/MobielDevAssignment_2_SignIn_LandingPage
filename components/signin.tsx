@@ -32,7 +32,7 @@ const SignIn: React.FC<SignInProps> = ({
     );
     if (user) {
       alert(`Hi ${username}!\nYou have successfully logged in!`);
-      //For now to test out the functionality.
+      //TODO: regex to check uppercase, lowercase, number, and special character???
       booleanToggle(true);
     } else if (username === "") {
       alert("Please enter a username");
@@ -42,9 +42,9 @@ const SignIn: React.FC<SignInProps> = ({
       alert("Username cannot contain spaces");
     } else if (password.includes(" ")) {
       alert("Password cannot contain spaces");
-    } else if (username.length < 7) {
+    } else if (username.length < 5) {
       alert("Username is too short");
-    } else if (password.length < 9) {
+    } else if (password.length < 8) {
       alert("Password is too short");
     } else {
       alert("Invalid username or password");
