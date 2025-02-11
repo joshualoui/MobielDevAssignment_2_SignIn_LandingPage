@@ -16,14 +16,24 @@ const SignIn: React.FC<SignInProps> = ({
 }) => {
   const [password, setPassword] = useState<string>("");
   const router = useRouter();
+  //TODO: Display appropriate error messages for invalid inputs
+  // (e.g., incorrect format, username not found, incorrect password, username too short).
   const handleSubmit = () => {
     const user = credentials.users.find(
       (user) => user.username === username && user.password === password
     );
     if (user) {
-      alert("User found");
+      alert("User found direct to landing page");
       //For now to test out the functionality.
-      // booleanToggle(true);
+      booleanToggle(true);
+    } else if (username.includes(" ")) {
+      alert("Username cannot contain spaces");
+    } else if (password.includes(" ")) {
+      alert("Password cannot contain spaces");
+    } else if (username.length < 7) {
+      alert("Username is too short");
+    } else if (password.length < 9) {
+      alert("Password is too short");
     } else {
       alert("Invalid username or password");
     }
