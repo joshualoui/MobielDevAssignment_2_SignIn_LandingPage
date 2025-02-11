@@ -36,6 +36,10 @@ const LandingPage: React.FC<LandingPageProps> = ({
       >
         <Text style={styles.buttonText}>Log Out</Text>
       </TouchableOpacity>
+
+      <Text style={styles.text}>
+        Somewhere down here will be the 2 links to Calgary and Edmonton
+      </Text>
     </View>
   );
 };
