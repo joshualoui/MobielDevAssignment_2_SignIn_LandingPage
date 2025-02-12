@@ -11,6 +11,9 @@ import {
   Alert,
 } from "react-native";
 import SignIn from "./signin";
+import CityInfo from "./cityinfo";
+import CityLink from "./citylink";
+import { Image } from "react-native";
 
 type LandingPageProps = {
   username: string;
@@ -22,10 +25,61 @@ const LandingPage: React.FC<LandingPageProps> = ({
   booleanToggle,
 }) => {
   const user = credentials.users.find((user) => user.username === username);
+  const [activeTab, setActiveTab] = useState<string>("Calgary");
   return (
     <View style={styles.container}>
-      <Text style={styles.text}>Welcome {username}!</Text>
-      <Text style={styles.text}>You have successfully logged in!</Text>
+      <Text style={[styles.text, { fontWeight: 'bold' }]}>Welcome {username}!</Text>
+      <Text style={{ fontSize: 16 }}>You have successfully logged in!</Text>
+
+      <View style={styles.navContainer}>
+        <TouchableOpacity
+          style={[
+            styles.navButton,
+            activeTab === "Calgary" && styles.activeNavButton,
+          ]}
+          onPress={() => {
+            setActiveTab("Calgary");
+          }}
+        >
+          <Text style={styles.navButtonText}>Calgary</Text>
+        </TouchableOpacity>
+
+        <TouchableOpacity
+          style={[
+            styles.navButton,
+            activeTab === "Edmonton" && styles.activeNavButton,
+          ]}
+          onPress={() => {
+            setActiveTab("Edmonton");
+          }}
+        >
+          <Text style={styles.navButtonText}>Edmonton</Text>
+        </TouchableOpacity>
+      </View>
+
+      <View style={styles.infoContainer}>
+        {activeTab === "Calgary" ? (
+          <View>
+            <Text style={styles.cityTitle}>Calgary</Text>
+            <Image
+              source={{ uri: "https://upload.wikimedia.org/wikipedia/commons/thumb/b/bb/Downtown_Calgary_2020-4.jpg/800px-Downtown_Calgary_2020-4.jpg" }}
+              style={styles.cityImage}
+            />
+            <CityInfo info="Calgary is known for the Calgary Stampede and its beautiful Rocky Mountain views." />
+            <CityLink url="https://www.calgary.ca/home.html" />
+          </View>
+        ) : (
+          <View>
+            <Text style={styles.cityTitle}>Edmonton</Text>
+            <Image
+              source={{ uri: "https://cdn.britannica.com/78/140378-050-EA52656B/Skyline-Edmonton-Alberta-Canada.jpg" }}
+              style={styles.cityImage}
+            />
+            <CityInfo info="Edmonton is known for its West Edmonton Mall and the Edmonton Oilers." />
+            <CityLink url="https://www.edmonton.ca/" />
+          </View>
+        )}
+      </View>
 
       <TouchableOpacity
         style={styles.button}
@@ -37,36 +91,77 @@ const LandingPage: React.FC<LandingPageProps> = ({
         <Text style={styles.buttonText}>Log Out</Text>
       </TouchableOpacity>
 
-      <Text style={styles.text}>
-        Somewhere down here will be the 2 links to Calgary and Edmonton
-      </Text>
     </View>
+    
   );
 };
+
 const styles = StyleSheet.create({
   text: {
     fontSize: 20,
     padding: 10,
   },
   container: {
-    marginTop: 300,
     flexDirection: "column",
-    backgroundColor: "lightblue",
+    backgroundColor: "#f0f0f0",
+    height: "100%",
     alignItems: "center",
     justifyContent: "center",
+    padding: 20,
   },
   button: {
-    backgroundColor: "red",
-    padding: 5,
-    borderRadius: 8,
-    margin: 10,
-    borderColor: "gray",
-    borderWidth: 2,
+    backgroundColor: "#e74c3c",
+    padding: 10,
+    borderRadius: 5,
+    marginTop: 20,
+    width: '100%',
   },
   buttonText: {
     color: "white",
-    fontSize: 20,
-    padding: 5,
+    fontSize: 18,
+    textAlign: 'center',
+  },
+  navContainer: {
+    marginTop: 30,
+    flexDirection: "row",
+    width: '100%',
+    justifyContent: "space-around",
+  },
+  navButton: {
+    backgroundColor: "#fff",
+    padding: 10,
+    borderColor: "#ddd",
+    borderWidth: 1,
+    borderRadius: 5,
+    flex: 1,
+    alignItems: "center",
+    marginHorizontal: 5,
+  },
+  activeNavButton: {
+    backgroundColor: "#ddd",
+  },
+  navButtonText: {
+    fontSize: 16,
+  },
+  infoContainer: {
+    backgroundColor: "white",
+    padding: 20,
+    width: '100%',
+    alignItems: "center",
+    marginTop: 20,
+    borderRadius: 10,
+  },
+  cityTitle: {
+    fontSize: 24,
+    fontWeight: "bold",
+    marginBottom: 10,
+    color: "#333",
+  },
+  cityImage: {
+    height: 200,
+    width: 300,
+    marginBottom: 10,
+    borderRadius: 10,
   },
 });
 
