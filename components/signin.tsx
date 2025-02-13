@@ -54,18 +54,24 @@ const SignIn: React.FC<SignInProps> = ({
   return (
     <View style={styles.container}>
       <Text style={styles.text}>Sign In</Text>
-      <TextInput
-        placeholder="Username"
-        value={username}
-        onChangeText={setUsername}
-        style={styles.inputs}
-      />
-      <TextInput
-        placeholder="Password"
-        value={password}
-        onChangeText={setPassword}
-        style={styles.inputs}
-      />
+        <View style={styles.inputContainer}>
+
+          <Text style={styles.inputsText}>Username</Text>
+          <TextInput
+            placeholder="Username"
+            value={username}
+            onChangeText={setUsername}
+            style={styles.inputs}
+          />
+
+          <Text style={styles.inputsText}>Password</Text>
+          <TextInput
+            placeholder="Password"
+            value={password}
+            onChangeText={setPassword}
+            style={styles.inputs}
+          />
+        </View>
 
       <TouchableOpacity style={styles.button} onPress={handleSubmit}>
         <Text style={styles.buttonText}>Log In</Text>
@@ -76,25 +82,37 @@ const SignIn: React.FC<SignInProps> = ({
 
 const styles = StyleSheet.create({
   text: {
-    color: "blue",
-    fontSize: 20,
+    color: "#FFFFFF",
+    fontWeight: "bold",
+    fontSize: 28,
+    letterSpacing: 1.3,
     padding: 10,
+    marginBottom: 20,
   },
   container: {
     flexDirection: "column",
-    backgroundColor: "#f0f0f0",
+    backgroundColor: "#212A31",
     height: "100%",
     alignItems: "center",
     justifyContent: "center",
   },
+  inputContainer: {
+    flexDirection: "column",
+    backgroundColor: "#2E3944",
+    height: "26%",
+    alignItems: "center",
+    justifyContent: "center",
+    padding: 30,
+    borderRadius: 15,
+  },
   button: {
-    backgroundColor: "#0099ff",
+    backgroundColor: "#748d92",
     padding: 10,
     borderRadius: 8,
     margin: 10,
     borderColor: "gray",
     borderWidth: 2,
-    width: 250,
+    width: 330,
     height: 50,
     alignItems: "center",
   },
@@ -107,9 +125,16 @@ const styles = StyleSheet.create({
     padding: 10,
     margin: 10,
     borderRadius: 8,
-    borderColor: "gray",
-    borderWidth: 1,
+    borderColor: "lightgray",
+    borderWidth: 2,
     backgroundColor: "white",
   },
+  inputsText:{
+    color: "#FFFFFF",
+    fontSize: 16,
+    marginRight: 180,
+    paddingTop: 15,
+  },
 });
+
 export default SignIn;
