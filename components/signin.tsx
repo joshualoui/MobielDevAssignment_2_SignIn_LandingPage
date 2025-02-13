@@ -58,11 +58,13 @@ const SignIn: React.FC<SignInProps> = ({
         placeholder="Username"
         value={username}
         onChangeText={setUsername}
+        style={styles.inputs}
       />
       <TextInput
         placeholder="Password"
         value={password}
         onChangeText={setPassword}
+        style={styles.inputs}
       />
 
       <TouchableOpacity style={styles.button} onPress={handleSubmit}>
@@ -76,26 +78,38 @@ const styles = StyleSheet.create({
   text: {
     color: "blue",
     fontSize: 20,
+    padding: 10,
   },
   container: {
-    marginTop: 300,
     flexDirection: "column",
-    backgroundColor: "lightblue",
+    backgroundColor: "#f0f0f0",
+    height: "100%",
     alignItems: "center",
     justifyContent: "center",
   },
   button: {
     backgroundColor: "#0099ff",
-    padding: 5,
+    padding: 10,
     borderRadius: 8,
     margin: 10,
     borderColor: "gray",
     borderWidth: 2,
+    width: 250,
+    height: 50,
+    alignItems: "center",
   },
   buttonText: {
     color: "white",
-    fontSize: 20,
-    padding: 5,
+    fontSize: 16,
+  },
+  inputs: {
+    width: 250,
+    padding: 10,
+    margin: 10,
+    borderRadius: 8,
+    borderColor: "gray",
+    borderWidth: 1,
+    backgroundColor: "white",
   },
 });
 export default SignIn;
