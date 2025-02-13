@@ -55,12 +55,16 @@ const SignIn: React.FC<SignInProps> = ({
     <View style={styles.container}>
       <Text style={styles.text}>Sign In</Text>
         <View style={styles.inputContainer}>
+
+          <Text style={styles.inputsText}>Username</Text>
           <TextInput
             placeholder="Username"
             value={username}
             onChangeText={setUsername}
             style={styles.inputs}
           />
+
+          <Text style={styles.inputsText}>Password</Text>
           <TextInput
             placeholder="Password"
             value={password}
@@ -78,11 +82,12 @@ const SignIn: React.FC<SignInProps> = ({
 
 const styles = StyleSheet.create({
   text: {
-    color: "#748D92",
-    fontStyle: "italic",
+    color: "#FFFFFF",
     fontWeight: "bold",
-    fontSize: 20,
+    fontSize: 28,
+    letterSpacing: 1.3,
     padding: 10,
+    marginBottom: 20,
   },
   container: {
     flexDirection: "column",
@@ -94,7 +99,7 @@ const styles = StyleSheet.create({
   inputContainer: {
     flexDirection: "column",
     backgroundColor: "#2E3944",
-    height: "20%",
+    height: "26%",
     alignItems: "center",
     justifyContent: "center",
     padding: 30,
@@ -123,6 +128,12 @@ const styles = StyleSheet.create({
     borderColor: "lightgray",
     borderWidth: 2,
     backgroundColor: "white",
+  },
+  inputsText:{
+    color: "#FFFFFF",
+    fontSize: 16,
+    marginRight: 180,
+    paddingTop: 15,
   },
 });
 
