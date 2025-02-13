@@ -54,16 +54,20 @@ const SignIn: React.FC<SignInProps> = ({
   return (
     <View style={styles.container}>
       <Text style={styles.text}>Sign In</Text>
-      <TextInput
-        placeholder="Username"
-        value={username}
-        onChangeText={setUsername}
-      />
-      <TextInput
-        placeholder="Password"
-        value={password}
-        onChangeText={setPassword}
-      />
+        <View style={styles.inputContainer}>
+          <TextInput
+            placeholder="Username"
+            value={username}
+            onChangeText={setUsername}
+            style={styles.inputs}
+          />
+          <TextInput
+            placeholder="Password"
+            value={password}
+            onChangeText={setPassword}
+            style={styles.inputs}
+          />
+        </View>
 
       <TouchableOpacity style={styles.button} onPress={handleSubmit}>
         <Text style={styles.buttonText}>Log In</Text>
@@ -74,28 +78,52 @@ const SignIn: React.FC<SignInProps> = ({
 
 const styles = StyleSheet.create({
   text: {
-    color: "blue",
+    color: "#748D92",
+    fontStyle: "italic",
+    fontWeight: "bold",
     fontSize: 20,
+    padding: 10,
   },
   container: {
-    marginTop: 300,
     flexDirection: "column",
-    backgroundColor: "lightblue",
+    backgroundColor: "#212A31",
+    height: "100%",
     alignItems: "center",
     justifyContent: "center",
   },
+  inputContainer: {
+    flexDirection: "column",
+    backgroundColor: "#2E3944",
+    height: "20%",
+    alignItems: "center",
+    justifyContent: "center",
+    padding: 30,
+    borderRadius: 15,
+  },
   button: {
-    backgroundColor: "#0099ff",
-    padding: 5,
+    backgroundColor: "#748d92",
+    padding: 10,
     borderRadius: 8,
     margin: 10,
     borderColor: "gray",
     borderWidth: 2,
+    width: 330,
+    height: 50,
+    alignItems: "center",
   },
   buttonText: {
     color: "white",
-    fontSize: 20,
-    padding: 5,
+    fontSize: 16,
+  },
+  inputs: {
+    width: 250,
+    padding: 10,
+    margin: 10,
+    borderRadius: 8,
+    borderColor: "lightgray",
+    borderWidth: 2,
+    backgroundColor: "white",
   },
 });
+
 export default SignIn;
